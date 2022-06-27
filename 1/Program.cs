@@ -200,3 +200,72 @@ int CountFilterNumbers(int[] c)
 
 
 
+int[] array = new int[InputArrayData("Input array size: ")];
+FillArrayRandom(array);
+PrintArray(array);
+int sizeSecondArray = 0;
+if(array.Length % 2 == 0)
+{
+    sizeSecondArray = array.Length / 2;
+}
+else
+{
+    sizeSecondArray = array.Length / 2 + 1;
+}
+int[] array2 = new int[sizeSecondArray];
+MultiplicationAndFillArraySecond(array, array2);
+PrintArray(array2);
+
+int InputArrayData(string output)
+{
+    Console.Write(output);
+    return Convert.ToInt32(Console.ReadLine());
+}
+
+void FillArrayRandom(int[] a)
+{
+    for(int i = 0; i < a.Length; i++)
+    {
+        a[i] = new Random().Next(1, 10);
+    }
+}
+
+void MultiplicationAndFillArraySecond(int[] c, int[] d)
+{
+    if(c.Length % 2 == 0)
+    {
+        int j = c.Length - 1;
+        int k = 0;
+        for(int i = 0; i < c.Length / 2; i++)
+        {
+            d[k] = c[i] * c[j];
+            k++;
+            j--;
+        }
+    }
+    else
+    {
+        int j = c.Length - 1;
+        int k = 0;
+        for(int i = 0; i < c.Length / 2; i++)
+        {
+            d[k] = c[i] * c[j];
+            k++;
+            j--;
+        }
+        d[k] = c[k];
+    }
+}    
+
+void PrintArray(int[] b)
+{
+    Console.Write("[");
+    for(int i = 0; i < b.Length; i++)
+    {
+        Console.Write(b[i]);
+        if(i < b.Length - 1)
+            Console.Write(", ");
+        else
+            Console.WriteLine("]");
+    }
+}
